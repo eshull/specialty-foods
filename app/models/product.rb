@@ -2,10 +2,10 @@ class Product < ActiveRecord::Base
   has_many :reviews
 
   scope :sort_recent, -> {(
-  select("products.id, products.name, products.origin")
-  .order("lower(products.created_at) ASC")
+  select("products.id, products.name, products.cost, products.origin")
+  .order("(products.created_at) ASC")
   )}
-
+  
   scope :most_ratings, -> {(
   select("products.id, products.name, products.cost, products.origin, count(reviews.id) as reviews_count")
     .joins(:reviews)
