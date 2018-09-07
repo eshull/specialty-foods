@@ -2,7 +2,7 @@
 <h2><%= @product.cost %></h2>
 <h3><%= @product.origin %></h3>
 
-<h1><%= @product.name %> Reviews</h1>
+<h1><%= @product.name %> Reviews:</h1>
 <% @product.reviews.each do |review| %>
   <h3><%= review.author %></h3>
   <h3><%= review.rating %></h3>
