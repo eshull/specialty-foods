@@ -13,6 +13,7 @@
 
 
 <p><%= link_to "Add a review", new_product_review_path(@product) %></p>
+<p><%= link_to "Edit a Product", edit_product_path(@product) %></p>
 <p><%= link_to "Delete Product", product_path(@product),
                         :data => {:confirm => "Are you sure?",
                                        :method => "delete"} %></p>
