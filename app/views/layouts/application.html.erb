@@ -21,7 +21,10 @@
       <span class="navbar-text">
         <h2><%= link_to "Home", products_path %></h2>
       </span>
-</nav>
+      <span class="navbar-text newProduct">
+        <h2><%= link_to "Add New Product", new_product_path %></h2>
+      </span>
+  </nav>
     <%= yield %>
   </body>
 </html>
