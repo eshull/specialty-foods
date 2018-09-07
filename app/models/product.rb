@@ -14,11 +14,15 @@ class Product < ActiveRecord::Base
     .limit(1)
   )}
 
-  scope(:highest_rating, ->do
+  scope :highest_rating, ->{(
       select("products.id, products.name, products.origin, products.cost, count(reviews.rating) as reviews_rating")
       .joins(:reviews)
       .group("products.id")
       .order("reviews_rating DESC")
       .limit(1)
-    end)
+    )}
+
+    scope :local_to_usa, -> {(
+      where(origin: "USA")
+      )}
 end
