@@ -2,6 +2,15 @@
 <h2><%= @product.cost %></h2>
 <h3><%= @product.origin %></h3>
 
+<h1><%= @product.name %> Reviews</h1>
+<% @product.reviews.each do |review| %>
+  <h3><%= review.author %></h3>
+  <h3><%= review.rating %></h3>
+  <p><%= review.content %></p>
+
+
+<% end %>
+
 
 <p><%= link_to "Add a review", new_product_review_path(@product) %></p>
 <p><%= link_to "Delete Product", product_path(@product),
