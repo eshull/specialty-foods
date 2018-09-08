@@ -1,5 +1,8 @@
 class Product < ActiveRecord::Base
   has_many :reviews
+  validates :name, :presence => true
+  validates :cost, :presence => true
+  validates :origin, :presence => true
 
   scope :sort_recent, -> {(
   select("products.id, products.name, products.cost, products.origin")
