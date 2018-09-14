@@ -22,7 +22,7 @@ end
 
 Product.all.each do |product|
     60.times do |index|
-      product.review.create!(author: Faker::Name.name, content: Faker::Lorem.sentence(20),
+      product.reviews.create!(author: Faker::Name.name, content: Faker::Lorem.sentence(20),
       rating: Faker::Number.between(1, 5),
       product_id: Product.all.shuffle[0].id)
   end
