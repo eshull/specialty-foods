@@ -1,19 +1,28 @@
+<%= render "layouts/errors", :object => @product %>
 <h1><%= @product.name %></h1>
 <h2><%= @product.cost %></h2>
 <h3><%= @product.origin %></h3>
 
-<h1><%= @product.name %> Reviews:</h1>
+<% if @product.reviews.any? %>
+<h4>Here are the reviews for <%= @product.name %></h4>
 <% @product.reviews.each do |review| %>
-  <h3><%= review.author %></h3>
-  <h3><%= review.rating %></h3>
-  <p><%= review.content %></p>
+    <p>
+      <%= review.content %> Rating: <%= review.rating %> Author: <%= review.author %>
+      <%= link_to "Edit", edit_product_review_path(@product, review) %> |
+      <%= link_to "Delete", product_review_path(@product, review),
+                               :data => {:confirm => "Are you sure?",
+                                              :method => "delete"} %>
+    </p>
+  <% end %>
 
-
+<% else %>
+<p>There are no reviews yet!</p>
 <% end %>
 
 
+
 <p><%= link_to "Add a review", new_product_review_path(@product) %></p>
-<p><%= link_to "Edit a Product", edit_product_path(@product) %></p>
+<p><%= link_to "Change this Product", edit_product_path(@product) %></p>
 <p><%= link_to "Delete Product", product_path(@product),
                         :data => {:confirm => "Are you sure?",
                                        :method => "delete"} %></p>
